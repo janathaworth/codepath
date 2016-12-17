@@ -20,18 +20,15 @@
     
     <?php
         if (isset($_POST['submit'])) {
-            if(isset($_POST['radio'])) {
-                $tip_entered = $_POST['radio'];
-                $bill_entered = $_POST["bill"];
-                if ($tip_entered > 0 && $bill_entered > 0 && $bill_entered != "") {
+            $tip_entered = $_POST['radio'];
+            $bill_entered = $_POST["bill"];
+            if(isset($_POST['radio']) && $tip_entered > 0 && $bill_entered > 0 && $bill_entered != "") {
                     $tip_total = number_format((float)($tip_entered / 100) * $bill_entered, 2, '.', '');
                     $bill_total = number_format((float)$bill_entered + $tip_total, 2, '.', '');
                     echo "<center> Tip : $$tip_total </center>"; 
                     echo "<center> Total : $$bill_total</center>";
                 }
                 
-                
-            }
             else {
                 echo "<center>Invalid Input</center>";
             }
